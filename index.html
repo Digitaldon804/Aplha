@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpha Gadgets ESP8266 Flash Tool v2.7.2</title>
+  <link rel="icon" href="https://img.icons8.com/color/48/alpha.png">
+  <meta name="description" content="Official Alpha Gadgets ESP8266 Firmware Flasher" />
+  <meta name="color-scheme" content="dark light" />
+
+  <script src="https://kit.fontawesome.com/2511170d03.js" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #003366; /* Royal Blue */
+      --secondary-color: #D4AF37; /* Gold */
+      --background-color: #f5f5f5;
+      --text-color: #333;
+      --card-background: #fff;
+      --form-background: #f0f4f8;
+      --shadow-color: rgba(0, 0, 0, 0.15);
+      --header-gradient: linear-gradient(135deg, #003366 0%, #001A33 100%);
+      --button-gradient: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      --footer-gradient: linear-gradient(135deg, #001A33 0%, #003366 100%);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      background: var(--header-gradient);
+      padding: 30px 20px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 6px 15px var(--shadow-color);
+      transition: background 0.3s ease;
+    }
+
+    h1.logo {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    h1.logo .subtitle {
+      font-size: 1.2rem;
+      font-weight: 400;
+      display: block;
+      margin-top: 5px;
+      opacity: 0.8;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 50px;
+      background-color: var(--card-background);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px var(--shadow-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h2,
+    h5 {
+      margin-top: 2rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .device-form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, #f0f4f8 0%, #e1e8ed 100%);
+      border-radius: 10px;
+      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
+      transition: background 0.3s ease;
+    }
+
+    .device-form input {
+      margin-left: 10px;
+    }
+
+    .device-form label {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--text-color);
+    }
+
+    /* Custom Button */
+    .button-row esp-web-install-button {
+      background: var(--button-gradient);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      padding: 12px 24px;
+    }
+
+    .button-row esp-web-install-button:hover {
+      background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.6);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      padding: 12px 0;
+      font-size: 1.1rem;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      background: var(--footer-gradient);
+      color: #fff;
+      font-size: 1.4rem;
+      box-shadow: 0 -6px 15px var(--shadow-color);
+      transition: background 0.3s ease;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+    }
+
+    .fa {
+      margin-right: 10px;
+    }
+
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: #1a1a1a;
+        --text-color: #f5f5f5;
+        --card-background: #2d2d2d;
+        --form-background: #3a3a3a;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --header-gradient: linear-gradient(135deg, #001A33 0%, #000 100%);
+        --button-gradient: linear-gradient(135deg, #0a84ff 0%, #0060df 100%);
+        --footer-gradient: linear-gradient(135deg, #000 0%, #001A33 100%);
+        --primary-color: #f5f5f5;
+        --secondary-color: #FFD700; /* Rich Gold */
+      }
+
+      .device-form {
+        background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
+      }
+
+      ul li {
+        color: #ccc;
+      }
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .content {
+        padding: 30px;
+      }
+
+      .device-form {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1.logo {
+        font-size: 2.2rem;
+      }
+
+      h1.logo .subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="logo fade-in">
+      ALPHA GADGETS
+      <span class="subtitle">ESP8266 FIRMWARE FLASH TOOL v2.7.2</span>
+    </h1>
+  </header>
+
+  <div class="content fade-in">
+    <h2><i class="fa fa-microchip"></i> Select Your Firmware </h2>
+    <div class="device-form">
+      <label for="display-type"><i class="fa fa-cogs"></i> Alpha Gadgets Firmware </label>
+      <div>
+        <input type="radio" name="type" value="0" id="Alpha Gadgets v2.7.2" />
+        <label for="Alpha Gadgets v2.7.2">Alpha Gadgets v2.7.2</label>
+      </div>
+    </div>
+    <p>This tool flashes the professional Alpha Gadgets v2.7.2 firmware exclusively to ESP8266 boards.</p>
+
+    <div id="descriptif"></div>
+
+    <div class="button-row" align="center">
+      <esp-web-install-button class="invisible fade-in"></esp-web-install-button>
+    </div>
+
+    <h5><i class="fa fa-info-circle"></i> IMPORTANT NOTICE </h5>
+    <ul>
+      <li><i class="fa fa-check-square"></i> Alpha Gadgets tools are strictly optimized for genuine ESP8266-based hardware. </li>
+      <li><i class="fa fa-times-circle"></i> ESP32 or other variants are NOT supported by this firmware version. </li>
+    </ul>
+
+    <h5>Step-by-Step ESP8266 Firmware Installation Guide</h5>
+    <ul>
+      <li><i class="fa fa-hand-pointer"></i> <span style="font-weight:600;">Select Your Firmware:</span> Choose the Alpha Gadgets v2.7.2 option above.</li>
+      <li><i class="fa fa-usb"></i> <span style="font-weight:600;">Connect Board:</span> Plug in your ESP8266 board to your PC via USB.</li>
+      <li><i class="fa fa-plug"></i> <span style="font-weight:600;">Initiate Connection:</span> Click "Connect" and select the appropriate serial port of your ESP.</li>
+      <li><i class="fa fa-arrow-circle-down"></i> <span style="font-weight:600;">Flash Firmware:</span> On the Device Dashboard, click "Install" to begin the flashing process.</li>
+    </ul>
+
+    <h5>Accessing the Advanced Web Serial Monitor</h5>
+    <ul>
+      <li><i class="fa fa-hand-pointer"></i> <span style="font-weight:600;">Select Your Firmware:</span> Ensure the correct firmware is selected above.</li>
+      <li><i class="fa fa-usb"></i> <span style="font-weight:600;">Connect Board:</span> Plug in your ESP8266 board via USB.</li>
+      <li><i class="fa fa-plug"></i> <span style="font-weight:600;">Initiate Connection:</span> Click "Connect" and choose the ESP's serial port.</li>
+      <li><i class="fa fa-terminal"></i> <span style="font-weight:600;">Open Console:</span> On the Device Dashboard, click "Logs and Console" to view serial output.</li>
+    </ul>
+  </div>
+
+  <footer class="fade-in">
+    <p>© 2024 Alpha Gadgets. All rights reserved.</p>
+    <div class="contact-info">
+      <h5><i class="fa fa-phone"></i> Official WhatsApp Support</h5>
+      <p><i class="fab fa-whatsapp"></i> +92 328 368 6756</p>
+    </div>
+  </footer>
+
+  <script type="module" src="https://cdn.jsdelivr.net/gh/zeronetfix/Esp-Web-Tool@main/dist/web/install-button.js"></script>
+
+  <script>
+    // Note: This script flashes the specific Nethercap firmware version 2.7.2. Alpha Gadgets tool simply wraps this functionality.
+    document.querySelectorAll('input[name="type"]').forEach(radio =>
+      radio.addEventListener("change", () => {
+        const button = document.querySelector('esp-web-install-button');
+        button.manifest = `https://raw.githubusercontent.com/zeronetfix/nethercap_2.7.2/refs/heads/main/0.json`;
+        button.classList.remove('invisible');
+      }
+    ));
+  </script>
+</body>
+
+</html>
